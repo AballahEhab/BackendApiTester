@@ -1,5 +1,7 @@
 package com.abdallahehab.backendapitester.data;
 
+import android.util.Log;
+
 import java.util.List;
 import java.util.Map;
 
@@ -18,8 +20,29 @@ public class Response {
         this.responseHeaderFields = responseHeaderFields;
     }
 
+    public int getResponseCode() {
+        return responseCode;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public String getResponseBody() {
+        return responseBody;
+    }
+
+    public String getResponseMessage() {
+        return responseMessage;
+    }
+
+    public Map<String, List<String>> getResponseHeaderFields() {
+        return responseHeaderFields;
+    }
+
     @Override
     public String toString() {
+
         return "Response{" +
                 "responseCode=" + responseCode +
                 ", errorMessage='" + errorMessage + '\'' +

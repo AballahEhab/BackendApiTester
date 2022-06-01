@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Media/Documents/AndroidSudioProjectjects/naitve/my proj/BackendAPITester/app/src/main/res/layout/activity_main.xml" value="0.4" />
-        <entry key="..\:/Media/Documents/AndroidSudioProjectjects/naitve/my proj/BackendAPITester/app/src/main/res/layout/header_feild_item.xml" value="0.2" />
+        <entry key="..\:/Media/Documents/AndroidSudioProjectjects/naitve/my proj/BackendAPITester/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Media/Documents/AndroidSudioProjectjects/naitve/my proj/BackendAPITester/app/src/main/res/layout/activity_response.xml" value="0.4095826893353941" />
+        <entry key="..\:/Media/Documents/AndroidSudioProjectjects/naitve/my proj/BackendAPITester/app/src/main/res/layout/header_feild_item.xml" value="0.4" />
         <entry key="..\:/Media/Documents/AndroidSudioProjectjects/naitve/my proj/BackendAPITester/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.26197916666666665" />
       </map>
     </option>

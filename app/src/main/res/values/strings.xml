@@ -2,4 +2,15 @@
     <string name="app_name">Backend API Tester</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="header_value_hint">value</string>
+    <string name="header_key_hint">key</string>
+    <string name="send_request_btn">send request</string>
+    <string name="url_hint">URL</string>
+    <string name="request_type_get">get</string>
+    <string name="request_type_post">post</string>
+    <string name="request_body_edt_txt_hint">Request body</string>
+    <string name="response_code_label">Response Code:</string>
+    <string name="error_message_label">Error message:</string>
+    <string name="request_body_label">Request Body</string>
+    <string name="request_headers_label">Request Header:</string>
 </resources>

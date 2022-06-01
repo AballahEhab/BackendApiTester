@@ -1,5 +1,7 @@
 package com.abdallahehab.backendapitester.data;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -7,30 +9,33 @@ public class HTTPRequest {
     public static final String POST = "POST";
     public static final String GET = "GET";
 
-    private String urlAddress,
-            requestType,
-            body;
+    private String requestType, body;
 
-    public HTTPRequest(String urlAddress, String requestType, String body, ArrayList<HeaderField> requestHeaderFields) {
-        this.urlAddress = urlAddress;
+    private URL url ;
+
+    private ArrayList<HeaderField> requestHeaderFields;
+
+
+    public HTTPRequest(String urlAddress, String requestType, String body, ArrayList<HeaderField> requestHeaderFields) throws MalformedURLException {
         this.requestType = requestType;
         this.body = body;
         this.requestHeaderFields = requestHeaderFields;
+        url = new URL(urlAddress);
     }
 
-    public HTTPRequest(String urlAddress, String requestType) {
-        this.urlAddress = urlAddress;
+    public HTTPRequest(String urlAddress, String requestType) throws MalformedURLException {
+        url = new URL(urlAddress);
         this.requestType = requestType;
     }
 
-    public HTTPRequest(String urlAddress, String requestType, String body) {
-        this.urlAddress = urlAddress;
+    public HTTPRequest(String urlAddress, String requestType, String body) throws MalformedURLException {
+        url = new URL(urlAddress);
         this.requestType = requestType;
         this.body = body;
     }
 
-    public String getUrlAddress() {
-        return urlAddress;
+    public URL getUrl() {
+        return url;
     }
 
     public String getRequestType() {
@@ -45,5 +50,4 @@ public class HTTPRequest {
         return requestHeaderFields;
     }
 
-    private ArrayList<HeaderField> requestHeaderFields;
 }

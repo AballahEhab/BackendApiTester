@@ -1,5 +1,7 @@
 package com.abdallahehab.backendapitester.data;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import java.io.BufferedOutputStream;
@@ -19,33 +21,25 @@ public class ServerConnectionService {
          String responseBody = null;
          String errorBody = null;
 
+         HttpURLConnection httpURLConnection = (HttpURLConnection) request.getUrl().openConnection();
 
-            URL url = new URL(request.getUrlAddress());
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+         httpURLConnection.setRequestMethod(request.getRequestType());
 
-            // setting the  Request Method Type
-            httpURLConnection.setRequestMethod(request.getRequestType());
+         httpURLConnection.setRequestProperty("Content-Type", "application/json");
 
-            // adding the headers for request
-            httpURLConnection.setRequestProperty("Content-Type", "application/json");
-//
-//            // set responseBody format type
-            httpURLConnection.setRequestProperty("Accept", "application/json");
+         httpURLConnection.setRequestProperty("Accept", "application/json");
 
-            if(request.getRequestHeaderFields()!=null){
-                for (HeaderField headerItem : request.getRequestHeaderFields()) {
-                    httpURLConnection.setRequestProperty(headerItem.key, headerItem.value);
-                }
-            }
+         if(request.getRequestHeaderFields()!=null){
+             for (HeaderField headerItem : request.getRequestHeaderFields()) {
+                 httpURLConnection.setRequestProperty(headerItem.getKey(), headerItem.getValue());
+             }
+         }
 
          // to write tha data in our request body
          if(request.getRequestType().equals( HTTPRequest.POST)){
 
-             // to be able to write content to output stream
-             //to tell the connection object that we will be wrting some data on the server and then will fetch the output result
              httpURLConnection.setDoOutput(true);
 
-             // this is used for just in case we don't know about the data size associated with our request
              httpURLConnection.setChunkedStreamingMode(0);
 
              OutputStream outputStream = new BufferedOutputStream(httpURLConnection.getOutputStream());
@@ -58,14 +52,15 @@ public class ServerConnectionService {
          }
 
          //Response
-         if (httpURLConnection.getResponseCode() >= HttpURLConnection.HTTP_OK && httpURLConnection.getResponseCode() < HttpURLConnection.HTTP_MULT_CHOICE  ) {
+         if (httpURLConnection.getResponseCode() >= HttpURLConnection.HTTP_OK
+                 && httpURLConnection.getResponseCode() < HttpURLConnection.HTTP_MULT_CHOICE  ) {
              responseBody = convertResponseInputStreamToString(httpURLConnection.getInputStream());
          }else {
              errorBody = convertResponseInputStreamToString(httpURLConnection.getErrorStream());
          }
 
-          Response response = new  Response(httpURLConnection.getResponseCode(),errorBody,responseBody,httpURLConnection.getResponseMessage(),httpURLConnection.getHeaderFields());
-        // this is done so that there are no open connections left when this task is going to complete
+          Response response = new  Response(httpURLConnection.getResponseCode(),errorBody,responseBody
+                  ,httpURLConnection.getResponseMessage(),httpURLConnection.getHeaderFields());
          httpURLConnection.disconnect();
 
         return response;
@@ -78,7 +73,6 @@ public class ServerConnectionService {
         BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream));
         String line;
         response = new StringBuffer();
-        //Expecting answer of type JSON single line {"json_items":[{"status":"OK","message":"<Message>"}]}
         while ((line = rd.readLine()) != null) {
             response.append(line);
         }

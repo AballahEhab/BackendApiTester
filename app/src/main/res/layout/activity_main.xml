@@ -5,91 +5,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.MainActivity"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="24dp">
+        android:layout_height="wrap_content"
+        tools:context=".ui.MainActivity">
 
 
         <ListView
-            android:id="@+id/headers_feilds_list"
-            android:layout_width="0dp"
-            android:layout_height="121dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
+            android:id="@+id/headers_fields_list"
+            android:layout_height="@dimen/headers_list_height_dp"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_medium"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/header_key_edt_txt" />
 
         <ImageButton
-            android:id="@+id/add_header_feild_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:background="#00FFFFFF"
-            android:scaleType="fitCenter"
+            android:id="@+id/add_header_field_btn"
+            android:layout_width="@dimen/add_header_btn_dimen"
+            android:layout_height="@dimen/add_header_btn_dimen"
+            style="@style/BackendAPITester.ImageButton"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
             android:src="@drawable/ic_baseline_add_24"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintLeft_toRightOf="@+id/header_value_edt_txt"
             app:layout_constraintTop_toTopOf="@+id/header_key_edt_txt" />
 
         <EditText
             android:id="@+id/header_value_edt_txt"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/add_header_btn_dimen"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:hint="@string/header_value_hint"
             android:ems="10"
-            android:hint="value"
             android:inputType="textPersonName"
-            app:layout_constraintRight_toLeftOf="@+id/add_header_feild_btn"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintRight_toLeftOf="@+id/add_header_field_btn"
             app:layout_constraintLeft_toRightOf="@+id/header_key_edt_txt"
             app:layout_constraintTop_toTopOf="@+id/header_key_edt_txt" />
 
         <EditText
             android:id="@+id/header_key_edt_txt"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/add_header_btn_dimen"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_large"
             android:ems="10"
-            android:hint="key"
+            android:hint="@string/header_key_hint"
             android:inputType="textPersonName"
             app:layout_constraintRight_toLeftOf="@+id/header_value_edt_txt"
-            app:layout_constraintHorizontal_bias="0.84"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/header_feilds_txt" />
+            app:layout_constraintTop_toBottomOf="@+id/header_fields_txt" />
 
         <Button
             android:id="@+id/send_request_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="send request"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/send_request_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/headers_feilds_list"
+            app:layout_constraintTop_toBottomOf="@+id/headers_fields_list"
             app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/url_edt_txt"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
             android:ems="10"
-            android:hint="URL"
+            android:hint="@string/url_hint"
             android:inputType="textPersonName"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -98,7 +91,7 @@
             android:id="@+id/request_type_rad_gr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/margin_large"
             android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="@+id/url_edt_txt"
             app:layout_constraintTop_toBottomOf="@+id/url_edt_txt">
@@ -107,37 +100,42 @@
                 android:id="@+id/get_radio_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="get" />
+                android:text="@string/request_type_get" />
 
             <RadioButton
                 android:id="@+id/post_radio_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="post" />
+                android:text="@string/request_type_post" />
+
         </RadioGroup>
 
         <EditText
             android:id="@+id/request_body_edt_txt"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
             android:ems="10"
-            android:hint="Request body"
+            android:hint="@string/request_body_edt_txt_hint"
             android:inputType="textMultiLine"
+            android:visibility="gone"
             app:layout_constraintLeft_toLeftOf="@+id/url_edt_txt"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/request_type_rad_gr" />
 
         <TextView
-            android:id="@+id/header_feilds_txt"
+            android:id="@+id/header_fields_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_huge"
             android:text="header fields"
-            android:textSize="20sp"
+            android:textSize="@dimen/header_fields_title_font_size"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/request_body_edt_txt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>
 
